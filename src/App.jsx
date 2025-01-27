@@ -28,12 +28,12 @@ function App() {
         }}
         className="w-screen  relative min-h-screen flex justify-between items-center"
       >
-        <div className="md:w-1/2 m-4 md:m-0 w-full FromTopFadeIn z-10  flex flex-col items-start justify-start h-max p-10 rounded-md backdrop-blur right-[30dvw] md:absolute bg-white/50">
-          <h1 className="text-3xl font-bold mb-5 w-2/3 text-purple-700">
+        <div className="md:w-fit m-4 md:m-0 w-full FromTopFadeIn z-10  flex flex-col items-start justify-start h-max p-10 rounded-md backdrop-blur right-[30dvw] md:absolute bg-white/50">
+          <h1 className="text-3xl md:whitespace-nowrap font-bold mb-5 md:w-2/3 text-purple-700">
             Lancez Votre Boutique en Ligne avec Kapture EasyShop
           </h1>
-          <h2 className="flex items-center mb-[10dvh] justify-center gap-2 text-purple-500">
-            <div className="w-[10px]  h-[10px] rounded-full animate-ping bg-purple-500 aspect-square"></div>{" "}
+          <h2 className="flex items-center text-2xl mb-[10dvh] justify-center gap-2 text-purple-500">
+            <div className="w-[10px]   h-[10px] rounded-full animate-ping bg-purple-500 aspect-square"></div>{" "}
             +500 petites entreprises envisagent déjà de nous rejoindre !
           </h2>
           <Form
@@ -43,7 +43,7 @@ function App() {
             attempt={attempt}
           ></Form>
         </div>
-        <div className="h-[80dvh] md:block hidden w-1/4 flex items-start justify-start">
+        <div className="h-[80dvh] md:flex hidden w-1/4 items-start justify-start">
           <img className="h-[5rem]" src="/logo.svg" alt="dashboard-img" />
         </div>
 

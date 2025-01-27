@@ -68,7 +68,7 @@
 
   95% {
     opacity: 1;
-    transform: translateY(15px);
+    transform: translateY(0px);
     /* Modal est à sa position normale */
   }
 

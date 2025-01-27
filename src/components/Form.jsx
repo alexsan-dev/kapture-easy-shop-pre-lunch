@@ -22,14 +22,28 @@ const Form = ({ setTheme, theme, setAttempt, attempt }) => {
       <form
         onSubmit={(e) => {
           let email = document.getElementById("email");
-          setLoading(true);
+          let name = document.getElementById("name");
+
           e.preventDefault();
+
+          if (name.value.length > 60 || name.value.length < 3) {
+            setTheme({
+              success: false,
+              message:
+                "la longueur du nom dois etre comprise entre 3 et 60 characters",
+            });
+            setAttempt([...attempt, attempt.length + 1]);
+
+            return;
+          }
+          setLoading(true);
           axios
             .post(
               "https://sandybrown-alligator-504803.hostingersite.com/api/post-email",
               {
                 key: import.meta.env.VITE_API_KEY,
                 email: email.value,
+                name: name.value,
               }
             )
             .then((response) => {
@@ -50,19 +64,26 @@ const Form = ({ setTheme, theme, setAttempt, attempt }) => {
               setLoading(false);
               setAttempt([...attempt, attempt.length + 1]);
               email.value = "";
+              name.value = "";
             });
         }}
         id="form"
-        className="w-full FromLeftFadeIn p-2 flex itemsècenter justify-center gap-1.5 md:gap-5"
+        className="w-full FromLeftFadeIn p-2 flex  md:flex-row flex-col items center justify-center gap-5 md:gap-5"
       >
+        <input
+          id="name"
+          placeholder="Nom"
+          className="ring-2 focus:outline-5 focus:outline-purple-700/50 placeholder:font-bold placeholder:text-xl placeholder:text-purple-300 ring-purple-700 md:w-2/3 md:p-4 p-2 rounded-full bg-zinc-100"
+          type="text"
+        />
         <input
           id="email"
           placeholder="Email"
           className="ring-2 focus:outline-5 focus:outline-purple-700/50 placeholder:font-bold placeholder:text-xl placeholder:text-purple-300 ring-purple-700 md:w-2/3 md:p-4 p-2 rounded-full bg-zinc-100"
-          type="text"
+          type="email"
         />
         {}
-        <button className="bg-purple-700 p-2 md:p-4 rounded-full font-bold text-purple-300 text-lg cursor-pointer hover:brightness-150 active:brightness-75">
+        <button className="bg-purple-700 whitespace-nowrap p-2 md:p-4 rounded-full font-bold text-purple-300 text-lg cursor-pointer hover:brightness-150 active:brightness-75">
           {loading ? (
             <l-infinity
               size="55"
