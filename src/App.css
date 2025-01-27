@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+/* Animation depuis la gauche */
+@keyframes FromLeftFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.FromLeftFadeIn {
+  animation: FromLeftFadeIn 0.8s ease-out forwards;
+}
+
+/* Animation depuis la droite */
+@keyframes FromRightFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.FromRightFadeIn {
+  animation: FromRightFadeIn 0.8s ease-out forwards;
+}
+
+/* Animation depuis le haut */
+@keyframes FromTopFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.FromTopFadeIn {
+  animation: FromTopFadeIn 0.8s ease-out forwards;
+}
+
+
+
+@keyframes modalAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+    /* Modal arrive par le haut */
+  }
+
+  5% {
+    opacity: 1;
+    transform: translateY(0);
+    /* Modal est à sa position normale */
+  }
+
+  95% {
+    opacity: 1;
+    transform: translateY(15px);
+    /* Modal est à sa position normale */
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(50px);
+    /* Modal s'en va vers le bas */
+  }
+}
+
+.modal {
+  animation: modalAnimation 5s ease forwards;
+}
