@@ -7,16 +7,18 @@ import { testimonials } from "./components/Testimonials";
 import Modal from "./components/Modal";
 
 import Aos from "aos";
+
+import CountdownTimer from "./components/CountdownTimer";
 AOS.init();
 function App() {
   const [attempt, setAttempt] = useState([]);
   const [theme, setTheme] = useState({
-    success: false,
-    message: "teste",
+    success: null,
+    message: "Problème de connexion ... réessayer",
   });
   return (
     <>
-      {attempt.map((item, index) => (
+      {theme.success !==null && attempt.map((item, index) => (
         <React.Fragment key={index}>
           <Modal isSuccess={theme.success} message={theme.message} />
         </React.Fragment>
@@ -26,14 +28,14 @@ function App() {
           backgroundImage:
             "url(\"data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='160' height='160' patternTransform='scale(3) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='oklch(0.902 0.063 306.703)'/><path d='M121.5 39.5V9.169c0-2.827 1.724-4.707 3.473-5.602l.707-.362c2.086-1.068 4.702-.631 6.359 1.026l1.985 1.985c1.349 1.349 3.235 2.018 5.14 2.128 12.336 0 12.336-18.505 0-18.505M40.75 39.499V9.17c0-2.827-1.724-4.707-3.473-5.602l-.707-.362c-2.086-1.068-4.702-.631-6.359 1.026l-1.985 1.985c-1.349 1.349-3.236 2.018-5.14 2.128-12.336 0-12.336-18.505 0-18.505m146.575 111.248c0-12.337-18.505-12.337-18.505 0 .11 1.904.78 3.79 2.128 5.139l1.985 1.985c1.657 1.657 2.094 4.273 1.026 6.36l-.362.706c-.895 1.75-2.775 3.474-5.602 3.474l-30.33-.001m49.66-63.086c0 12.336-18.505 12.336-18.505 0 .11-1.904.78-3.791 2.128-5.14l1.985-1.985c1.657-1.657 2.094-4.273 1.026-6.359l-.362-.707c-.895-1.749-2.775-3.474-5.602-3.473h-30.33m19.162 130.344c12.337 0 12.337-18.505 0-18.505-1.631 0-3.99.98-5.139 2.128l-1.985 1.985c-1.656 1.656-4.274 2.094-6.36 1.027l-.706-.362c-2.086-1.069-3.474-3.258-3.474-5.602v-34.302l.001-26.228c0-2.344-1.427-4.458-3.473-5.602l-.707-.361a5.83 5.83 0 00-6.36 1.026l-1.984 1.985c-1.144 1.152-3.508 2.128-5.14 2.128-12.336 0-12.336-18.505 0-18.505 1.904.11 3.715.86 5.14 2.128l1.985 1.985a5.812 5.812 0 006.359 1.026l.707-.362c1.287-1.485 3.473-2.775 3.473-5.602v-30.33M23.086 168.343c-12.336 0-12.336-18.505 0-18.505 1.632 0 3.992.98 5.14 2.128l1.985 1.985c1.656 1.656 4.274 2.094 6.359 1.027l.707-.362c2.086-1.069 3.474-3.258 3.474-5.602l-.001-34.302V88.485c0-2.344 1.387-4.533 3.473-5.602l.707-.361c2.085-1.068 4.703-.63 6.359 1.026l1.985 1.985c1.148 1.148 3.508 2.128 5.14 2.128 12.336 0 12.336-18.505 0-18.505-1.905.11-3.791.78-5.14 2.128l-1.985 1.985c-1.657 1.657-4.273 2.094-6.36 1.026l-.706-.362c-1.75-.895-3.474-2.775-3.474-5.602v-30.33m80.75 80.749H91.17c-2.827 0-4.707 1.724-5.602 3.473l-.362.707c-1.068 2.086-.631 4.702 1.026 6.359l1.985 1.985c1.349 1.349 2.018 3.236 2.128 5.14 0 12.336-18.505 12.336-18.505 0 0-1.632.98-3.992 2.128-5.14l1.985-1.985c1.656-1.656 2.094-4.274 1.026-6.359l-.361-.707c-1.069-2.086-3.258-3.474-5.602-3.473h-60.53c-2.344 0-4.533-1.387-5.602-3.473l-.362-.707c-1.067-2.085-.63-4.703 1.027-6.359l1.985-1.985c1.148-1.148 2.128-3.508 2.128-5.14 0-12.336-18.505-12.336-18.505 0M121.5 38H91.169c-2.827 0-4.707-1.724-5.602-3.473l-.362-.707c-1.068-2.086-.631-4.702 1.026-6.359l1.985-1.985c1.349-1.349 2.018-3.235 2.128-5.14C90.344 8 71.84 8 71.84 20.337c0 1.632.977 3.994 2.128 5.14.663.66 1.343 1.305 1.985 1.985 1.608 1.703 2.003 4.23 1.026 6.36-.11.24-.233.474-.361.706C75.48 36.577 73.359 38 71.015 38H36.712L10.485 38c-2.344 0-4.533 1.387-5.602 3.473-.12.236-.24.471-.362.707-1.067 2.085-.63 4.703 1.027 6.36l1.985 1.984c1.148 1.148 2.128 3.508 2.128 5.14C9.66 68-8.844 68-8.844 55.664'  stroke-width='0.5' stroke='oklch(0.627 0.265 303.9)' fill='none'/></pattern></defs><rect width='800%' height='800%' transform='translate(-627,0)' fill='url(%23a)'/></svg>\")",
         }}
-        className="w-screen  relative min-h-screen flex justify-between items-center"
+        className="w-full  relative min-h-screen flex justify-between items-center"
       >
-        <div className="md:w-1/2 m-4 md:m-0 w-full FromTopFadeIn z-10  flex flex-col items-start justify-start h-max p-10 rounded-md backdrop-blur right-[30dvw] md:absolute bg-white/50">
-          <h1 className="text-3xl font-bold mb-5 w-2/3 text-purple-700">
+        <div className="md:w-fit m-4 md:m-0 w-full FromTopFadeIn z-10  flex flex-col items-start justify-start h-max p-10 rounded-md backdrop-blur right-[30dvw] md:absolute bg-white/50">
+          <h1 className="text-3xl md:whitespace-nowrap font-bold mb-5 md:w-2/3 text-purple-700">
             Lancez Votre Boutique en Ligne avec Kapture EasyShop
           </h1>
-          <h2 className="flex items-center mb-[10dvh] justify-center gap-2 text-purple-500">
-            <div className="w-[10px]  h-[10px] rounded-full animate-ping bg-purple-500 aspect-square"></div>{" "}
+          <h2 className="flex items-center text-2xl mb-[10dvh] justify-center gap-2 text-purple-500">
+            <div className="w-[10px]   h-[10px] rounded-full animate-ping bg-purple-500 aspect-square"></div>{" "}
             +500 petites entreprises envisagent déjà de nous rejoindre !
           </h2>
           <Form
@@ -43,7 +45,7 @@ function App() {
             attempt={attempt}
           ></Form>
         </div>
-        <div className="h-[80dvh] md:block hidden w-1/4 flex items-start justify-start">
+        <div className="h-[80dvh] md:flex hidden w-1/4 items-start justify-start">
           <img className="h-[5rem]" src="/logo.svg" alt="dashboard-img" />
         </div>
 
@@ -55,7 +57,7 @@ function App() {
       </section>
       <section
         data-aos="fade-up"
-        className="w-screen h-fit my-20 text-center p-4"
+        className="w-full h-fit my-20 text-center p-4"
       >
         <h2 className="text-2xl font-bold text-purple-700">
           La solution e-commerce conçue pour les commerçants africains.
@@ -70,7 +72,7 @@ function App() {
             Kapture EasyShop est la solution qu’il vous faut.
           </span>
         </p>
-        <div className="w-screen mt-20 gap-10 md:gap-0 px-20 flex flex-col md:flex-row items-center justify-evenly">
+        <div className="w-full mt-20 gap-10 md:gap-0 px-20 flex flex-col md:flex-row items-center justify-evenly">
           <div
             data-aos="fade-up"
             className="md:w-1/3  flex flex-col justify-center items-center"
@@ -115,14 +117,14 @@ function App() {
           </div>
         </div>
       </section>
-      <div className="w-screen flex justify-between items-centerh-[2px]">
+      <div className="w-full flex justify-between items-centerh-[2px]">
         <div className=" h-[1px]"></div>
         <div className="w-2/3 h-[1px] bg-purple-500"></div>
         <div className=" h-[1px]"></div>
       </div>
       <section
         data-aos="fade-up"
-        className="w-screen flex-col flex items-center justify-around"
+        className="w-full flex-col flex items-center justify-around"
       >
         <div className="flex p-4 w-full ">
           <img
@@ -202,7 +204,7 @@ function App() {
       </section>
       <section
         data-aos="fade-up"
-        className="md:h-[50dvh] relative gap-10 grid w-screen p-10 md:grid-cols-3 my-10 bg-purple-300"
+        className="md:h-[50dvh] relative gap-10 grid w-full p-10 md:grid-cols-3 my-10 bg-purple-300"
       >
         <Icon
           className="absolute text-purple-700 animate-bounce top-0 left-2"
@@ -245,7 +247,7 @@ function App() {
           </li>
         </div>
       </section>
-      <div className="md:m-10 w-screen flex items-center justify-center">
+      <div className="md:m-10 w-full flex items-center justify-center">
         <h2 className="text-2xl font-bold text-purple-700">
           Ils Nous Font Confiance
         </h2>
@@ -253,23 +255,23 @@ function App() {
 
       <section
         data-aos="fade-up"
-        className="h-fit relative gap-10 grid w-screen p-10 md:grid-cols-3 my-10 "
+        className="h-fit relative gap-10 grid w-full p-10 md:grid-cols-3 my-10 "
       >
         {testimonials.map((item) => (
           <div
             key={item.id}
-            className="bg-purple-200  h-max flex flex-col justify-between items-center"
+            className="bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-md mx-auto my-6 transform transition duration-300 hover:scale-105 hover:shadow-2xl"
           >
             <img
-              className="h-1/2 w-full object-cover "
+              className="w-full h-56 object-cover rounded-t-lg"
               src={item.photo}
               alt={item.title}
             />
-            <div className="p-4">
-              <h2 className="text-xl mb-5 text-purple-700 font-bold">
+            <div className="p-6">
+              <h2 className="text-2xl font-semibold text-purple-700 mb-4">
                 {item.title}
               </h2>
-              <p className="italic text-purple-500">{item.text}</p>
+              <p className="text-lg text-purple-500 italic">{item.text}</p>
             </div>
           </div>
         ))}
@@ -291,7 +293,7 @@ function App() {
           Me pre-incrire
         </button>
       </div>
-      <div className="md:my-10 text-center w-screen flex items-center justify-center">
+      <div className="md:my-10 text-center w-full flex items-center justify-center">
         <h2 className="text-2xl font-bold text-purple-700">
           Suivez-nous sur les Réseaux Sociaux
         </h2>
@@ -333,6 +335,7 @@ function App() {
       <footer className="bg-purple-100 border-purple-700 text-center py-4 mt-8 border-t">
         <p className="text-purple-600 text-sm">Kapture Easy Shop © 2025</p>
       </footer>
+      <CountdownTimer />
     </>
   );
 }

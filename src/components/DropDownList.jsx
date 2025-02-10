@@ -27,7 +27,7 @@ const DropDownList = () => {
 
   return (
     <>
-      <div className="my-10 flex flex-col justify-center items-center">
+      <div className="my-10 flex flex-col justify-center items-start">
         {datas.map((item) => (
           <React.Fragment key={item.id}>
             <span
@@ -38,7 +38,7 @@ const DropDownList = () => {
                 item.id === selected
                   ? "scale-y-100"
                   : "border-b-purple-500 border-b-2"
-              } transition-all hover:bg-purple-200 cursor-pointer  flex items-center justify-between gap-1 md:gap-5 w-full p-2  font-bold text-purple-500`}
+              } transition-all text-left hover:bg-purple-200 cursor-pointer  flex items-center justify-between gap-1 md:gap-5 w-full p-2  font-bold text-purple-500`}
               key={item.id}
             >
               {item.title}
@@ -51,7 +51,7 @@ const DropDownList = () => {
               />
             </span>
             <p
-              className={`text-purple-500 tranistion-all  ${
+              className={`text-purple-500 text-lg w-fit text-start tranistion-all  ${
                 item.id === selected ? "scale-y-100" : "scale-y-0"
               }`}
             >

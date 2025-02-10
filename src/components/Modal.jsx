@@ -7,7 +7,7 @@ const Modal = ({ isSuccess, message }) => {
 
   return (
     <div
-      className={`modal absolute z-20 top-2 right-10 w-[90%] max-w-md p-4 rounded-2xl shadow-lg flex flex-col items-center ${modalClasses}`}
+      className={`modal z-20 top-2 fixed right-[5%] md:right-10 w-[90%] max-w-md p-4 rounded-2xl shadow-lg flex flex-col items-center ${modalClasses}`}
     >
       <div className={`text-${isSuccess ? "green" : "red"}-500 mb-4`}>
         <Icon height="2rem" icon={isSuccess ? "mdi:success" : "mdi:warning"} />
