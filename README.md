@@ -27,7 +27,7 @@
 
 <p>
  CLONE THIS REPO  , MOVE TO THE ROOT OF THE FOLDER.
- RUN <code> npm install && npm run build && npm run dev </code> (optionnal) 
+ RUN<code> npm install && npm run build && npm run dev </code>(optionnal) 
  TYPE YOUR LOCALHOST ADDRESS ON BROWSER , ENJOY :) .
 </p>
 
