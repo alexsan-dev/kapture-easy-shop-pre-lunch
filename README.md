@@ -1,28 +1,24 @@
-# HOW TO USE THIS PRE-LUNCH CODE BASE
+# how to use this pre-lunch code base
 
-## ENV REQUIREMENT 💻 :
+## env requirement 💻 :
 
-- NODE JS 
-- REACT 
+- node js 
+- react 
 
-## HOW IT WORK 🚥 :
+## how it work 🚥 :
 
 <p>
- IT'S A SIMPLE PRE-LUNCH REACT SPA PROJECT YOU CAN EDIT IT AS YOU WANT , 
- FORM , COUNTDOWN END DATE 
- YOU'LL NEED AN API TO RECEIVE PRE USERS INFORMATIONS (email , phone ...etc) 
- AND PUT IT INTO DATABASE (I BUILDED IT USING LARAVEL BUT IT'LL NOT OFFLINE FROM 20th MARCH 2025) 
+ it's a simple pre-lunch react spa project you can edit it as you want , 
+ form , countdown end date 
+ you'll need an api to receive pre users informations (email , phone ...etc) 
+ and put it into database (i builded it using laravel but it'll not offline from 20th march 2025) 
 </p>
 
 
-## STEPS TO MAK IT WORK 🚀 :
+## steps to mak it work 🚀 :
 
 <p>
- CLONE THIS REPO  , MOVE TO THE ROOT OF THE FOLDER.
- RUN<code> npm install && npm run build && npm run dev </code>(optionnal) 
- TYPE YOUR LOCALHOST ADDRESS ON BROWSER , ENJOY :) .
+ clone this repo  , move to the root of the folder.
+ run<code> npm install && npm run build && npm run dev </code>(optionnal) 
+ type your localhost address on browser , enjoy :) .
 </p>
-
-
-
-
